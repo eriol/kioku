@@ -1,7 +1,9 @@
 ScreenManager:
     MainScreen:
+    GameScreen:
 
 <MainScreen>:
+    name: "main"
     MDFloatLayout:
         AnchorLayout:
             anchor_x: "center"
@@ -20,3 +22,7 @@ ScreenManager:
             MDRectangleFlatButton:
                 text: "Start"
                 size_hint: 0.6, None
+                on_press: root.manager.current = "game"
+
+<GameScreen>:
+    name: "game"

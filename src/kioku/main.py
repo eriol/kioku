@@ -7,6 +7,10 @@ class MainScreen(MDScreen):
     """Main screen of the game."""
 
 
+class GameScreen(MDScreen):
+    """Screen where the game il played."""
+
+
 class KiokuApp(MDApp):
     """Kioku application."""
 
