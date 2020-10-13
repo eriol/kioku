@@ -1,17 +1,14 @@
-from kivy.app import App
-from kivy.uix.widget import Widget
-import kivy
-
-kivy.require("1.11.0")
+"""Kioku Memory Game."""
+from kivymd.app import MDApp
+from kivymd.uix.screen import MDScreen
 
 
-class CardWidget(Widget):
-    """A flipping card."""
+class MainScreen(MDScreen):
+    """Main screen of the game."""
 
 
-class KiokuApp(App):
-    def build(self):
-        return CardWidget()
+class KiokuApp(MDApp):
+    """Kioku application."""
 
 
 if __name__ == "__main__":
