@@ -2,18 +2,16 @@
 from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
 
+from kioku.screens import GameScreen  # noqa: F401
+
 
 class MainScreen(MDScreen):
     """Main screen of the game."""
-
-
-class GameScreen(MDScreen):
-    """Screen where the game il played."""
 
 
 class KiokuApp(MDApp):
     """Kioku application."""
 
 
-if __name__ == "__main__":
+def main():
     KiokuApp().run()
