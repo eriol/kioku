@@ -16,9 +16,6 @@ class GameScreen(MDScreen):
 
         self.cards = []
 
-        self.layout = GridLayout(cols=3)
-        self.add_widget(self.layout)
-
     def on_touch_up(self, touch, *args):
         if args:
             for k in args[0].ud:
@@ -44,7 +41,10 @@ class GameScreen(MDScreen):
     def load_cards(self):
         settings = self.manager.get_screen("settings")
         loader = ImageLoader(settings.ids.input_images_path.text)
-        for image in loader.get_repeated_images(times=1):
+
+        self.layout = GridLayout(cols=3)
+        self.add_widget(self.layout)
+        for image in loader.get_repeated_images(times=2):
             self.layout.add_widget(Card(card_image=image))
 
 
