@@ -1,6 +1,7 @@
 ScreenManager:
     MainScreen:
     GameScreen:
+    SettingsScreen:
 
 <MainScreen>:
     name: "main"
@@ -24,5 +25,33 @@ ScreenManager:
                 size_hint: 0.6, None
                 on_press: root.manager.current = "game"
 
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "bottom"
+
+            MDRectangleFlatButton:
+                text: "Settings"
+                size_hint: 0.6, None
+                on_press: root.manager.current = "settings"
+
+
 <GameScreen>:
     name: "game"
+
+
+<SettingsScreen>:
+    name: "settings"
+
+    MDTextField:
+        id: input_images_path
+        pos_hint: {'center_x':0.5, 'center_y':0.1}
+        helper_text: "Path to the images"
+        helper_text_mode: "persistent"
+        size_hint_x: None
+        pos_hint: {'center_y':0.75, 'center_x':0.5}
+
+    MDRaisedButton:
+        text: "Main"
+        pos_hint: {'center_x':0.5, 'center_y':0.1}
+        size_hint: 0.6, None
+        on_press: root.manager.current = "main"

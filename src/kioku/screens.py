@@ -3,6 +3,7 @@ from kivy.uix.gridlayout import GridLayout
 
 from kivymd.uix.screen import MDScreen
 
+from .utils import ImageLoader
 from .widgets import Card
 
 
@@ -17,8 +18,6 @@ class GameScreen(MDScreen):
 
         self.layout = GridLayout(cols=3)
         self.add_widget(self.layout)
-
-        self.load_cards()
 
     def on_touch_up(self, touch, *args):
         if args:
@@ -39,5 +38,15 @@ class GameScreen(MDScreen):
                 card2.is_discovered = True
             self.cards = []
 
+    def on_pre_enter(self):
+        self.load_cards()
+
     def load_cards(self):
-        pass
+        settings = self.manager.get_screen("settings")
+        loader = ImageLoader(settings.ids.input_images_path.text)
+        for image in loader.get_repeated_images(times=1):
+            self.layout.add_widget(Card(card_image=image))
+
+
+class SettingsScreen(MDScreen):
+    """Screen for settings."""
