@@ -11,7 +11,6 @@ class ImageLoader:
 
     def load(self):
         self.images = [f.name for f in self.path.glob("*.jpg")]
-        print(self.images)
 
     def get_repeated_images(self, times):
         images_to_return = self.images * 2 * times
