@@ -10,6 +10,8 @@ Kivy = "^2.0.0"
 kivymd = "^0.104.1"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.3"
+pytest-xdist = "^2.2.1"
 
 [tool.poetry.scripts]
 kioku = "kioku.main:main"
