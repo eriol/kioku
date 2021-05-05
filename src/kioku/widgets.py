@@ -1,6 +1,6 @@
 from kivy.animation import Animation
 from kivy.clock import Clock
-from kivy.properties import NumericProperty, StringProperty, BooleanProperty
+from kivy.properties import BooleanProperty, NumericProperty, StringProperty
 from kivy.uix.button import Button
 
 

@@ -1,6 +1,5 @@
 from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
-
 from kivymd.uix.screen import MDScreen
 
 from .utils import ImageLoader
