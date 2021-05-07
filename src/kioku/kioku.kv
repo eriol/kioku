@@ -1,3 +1,5 @@
+#: import gch kivy.utils.get_color_from_hex
+
 ScreenManager:
     MainScreen:
     GameScreen:
@@ -5,34 +7,24 @@ ScreenManager:
 
 <MainScreen>:
     name: "main"
-    MDFloatLayout:
-        AnchorLayout:
-            anchor_x: "center"
-            anchor_y: "top"
+    md_bg_color: gch("#cccccc")
+    MDBoxLayout:
+        orientation: 'vertical'
 
-            MDLabel:
-                text: "kioku"
-                halign: "center"
-                size_hint: None, None
+        MainToolbar:
 
+        MDLabel:
+            md_bg_color: gch("#eeeeee")
+            text: "WIP"
+            halign: "center"
 
-        AnchorLayout:
-            anchor_x: "center"
-            anchor_y: "center"
+        MDRectangleFlatButton:
+            text: "Start"
+            on_press: root.manager.current = "game"
 
-            MDRectangleFlatButton:
-                text: "Start"
-                size_hint: 0.6, None
-                on_press: root.manager.current = "game"
-
-        AnchorLayout:
-            anchor_x: "center"
-            anchor_y: "bottom"
-
-            MDRectangleFlatButton:
-                text: "Settings"
-                size_hint: 0.6, None
-                on_press: root.manager.current = "settings"
+        MDRectangleFlatButton:
+            text: "Settings"
+            on_press: root.manager.current = "settings"
 
 
 <GameScreen>:
@@ -54,3 +46,19 @@ ScreenManager:
         text: "Main"
         pos_hint: {'center_x':0.5, 'center_y':0.1}
         on_press: root.manager.current = "main"
+
+<MainToolbar>
+    md_bg_color: gch("#eeaa12")
+    size_hint_y: None
+    height: self.theme_cls.standard_increment
+    padding: dp(10)
+    spacing: dp(12)
+
+    MDLabel:
+        text: "kioku"
+
+    Widget:
+
+    MDIconButton:
+        icon: "plus-circle-outline"
+        pos_hint: {"center_y": .5}
