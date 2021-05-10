@@ -2,6 +2,8 @@ from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.properties import BooleanProperty, NumericProperty, StringProperty
 from kivy.uix.button import Button
+from kivymd.app import MDApp
+from kivymd.uix.list import BaseListItem
 
 
 class Card(Button):
@@ -34,3 +36,14 @@ class Card(Button):
     def _fade_in(self, *args):
         anim = Animation(opacity=1)
         anim.start(self)
+
+
+class LevelCoverListItem(BaseListItem):
+    """A level inside the level list."""
+
+    name = StringProperty()
+    path = StringProperty()
+
+    def on_press(self):
+        MDApp.get_running_app().root.get_screen("game").level_path = self.path
+        MDApp.get_running_app().root.current = "game"

@@ -62,3 +62,25 @@ ScreenManager:
     MDIconButton:
         icon: "plus-circle-outline"
         pos_hint: {"center_y": .5}
+
+<LevelCoverListItem>:
+    size_hint_y: None
+    height: dp(100)
+
+    canvas:
+        Color:
+            rgba:
+                self.theme_cls.divider_color
+        Line:
+            points: (root.x+dp(16), root.y, root.x+self.width-dp(16)-0, root.y)
+
+
+    MDBoxLayout:
+        orientation: "vertical"
+        adaptive_height: True
+        pos_hint: {"center_x": .5, "center_y": .5}
+        padding: dp(15)
+        spacing: dp(10)
+
+        MDLabel:
+            text: root.name
