@@ -13,10 +13,10 @@ ScreenManager:
 
         MainToolbar:
 
-        MDLabel:
-            md_bg_color: gch("#eeeeee")
-            text: "WIP"
-            halign: "center"
+        ScrollView:
+
+            MDList:
+                id: levels
 
         MDRectangleFlatButton:
             text: "Start"
@@ -47,7 +47,7 @@ ScreenManager:
         pos_hint: {'center_x':0.5, 'center_y':0.1}
         on_press: root.manager.current = "main"
 
-<MainToolbar>
+<MainToolbar>:
     md_bg_color: gch("#eeaa12")
     size_hint_y: None
     height: self.theme_cls.standard_increment
