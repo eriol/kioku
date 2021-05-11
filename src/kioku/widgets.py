@@ -1,9 +1,12 @@
+import toml
 from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.properties import BooleanProperty, NumericProperty, StringProperty
 from kivy.uix.button import Button
 from kivymd.app import MDApp
 from kivymd.uix.list import BaseListItem
+
+METADATA_FILE_NAME = "metadata.toml"
 
 
 class Card(Button):
@@ -47,3 +50,11 @@ class LevelCoverListItem(BaseListItem):
     def on_press(self):
         MDApp.get_running_app().root.get_screen("game").level_path = self.path
         MDApp.get_running_app().root.current = "game"
+
+    @classmethod
+    def from_metadata(cls, path):
+        """Create a new instance of this class using data inside METADATA_FILE_NAME."""
+        with open(path / METADATA_FILE_NAME) as f:
+            data = toml.load(f)
+
+        return cls(name=data["name"], path=str(path))
