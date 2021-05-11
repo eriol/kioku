@@ -13,6 +13,7 @@ python = "^3.9"
 Kivy = "^2.0.0"
 kivymd = "^0.104.1"
 xdg = "^5.0.2"
+toml = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"
