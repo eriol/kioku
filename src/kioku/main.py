@@ -27,7 +27,7 @@ class KiokuApp(MDApp):
         self.load_levels()
 
     def load_levels(self):
-        """Loads levels from settings.LEVELS_DIR."""
+        """Load levels from settings.LEVELS_DIR."""
         for level_path in settings.LEVELS_DIR.iterdir():
             if level_path.is_dir():
                 self.root.get_screen("main").ids.levels.add_widget(
