@@ -46,9 +46,13 @@ class LevelCoverListItem(BaseListItem):
 
     name = StringProperty()
     path = StringProperty()
+    columns_number = NumericProperty()
 
     def on_press(self):
         MDApp.get_running_app().root.get_screen("game").level_path = self.path
+        MDApp.get_running_app().root.get_screen(
+            "game"
+        ).columns_number = self.columns_number
         MDApp.get_running_app().root.current = "game"
 
     @classmethod
@@ -57,4 +61,6 @@ class LevelCoverListItem(BaseListItem):
         with open(path / METADATA_FILE_NAME) as f:
             data = toml.load(f)
 
-        return cls(name=data["name"], path=str(path))
+        data.update({"path": str(path)})
+
+        return cls(**data)

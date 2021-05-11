@@ -1,5 +1,5 @@
 from kivy.core.window import Window
-from kivy.properties import StringProperty
+from kivy.properties import NumericProperty, StringProperty
 from kivy.uix.gridlayout import GridLayout
 from kivymd.uix.screen import MDScreen
 
@@ -11,6 +11,7 @@ class GameScreen(MDScreen):
     """Screen where the game is played."""
 
     level_path = StringProperty()
+    columns_number = NumericProperty(3)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -43,7 +44,7 @@ class GameScreen(MDScreen):
     def load_cards(self):
         loader = ImageLoader(self.level_path)
 
-        self.layout = GridLayout(cols=3)
+        self.layout = GridLayout(cols=self.columns_number)
         self.add_widget(self.layout)
         for image in loader.get_repeated_images(times=2):
             self.layout.add_widget(Card(card_image=image))
