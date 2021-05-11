@@ -11,7 +11,7 @@ class GameScreen(MDScreen):
     """Screen where the game is played."""
 
     level_path = StringProperty()
-    columns_number = NumericProperty(3)
+    columns_number = NumericProperty()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

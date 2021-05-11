@@ -7,6 +7,8 @@ from kivymd.app import MDApp
 from kivymd.uix.list import BaseListItem
 
 METADATA_FILE_NAME = "metadata.toml"
+COLUMNS_NUMBER_KEY = "columns_number"
+DEFAULT_COLUMNS_NUMBER = 3
 
 
 class Card(Button):
@@ -60,6 +62,9 @@ class LevelCoverListItem(BaseListItem):
         """Create a new instance of this class using data inside METADATA_FILE_NAME."""
         with open(path / METADATA_FILE_NAME) as f:
             data = toml.load(f)
+
+        if COLUMNS_NUMBER_KEY not in data:
+            data[COLUMNS_NUMBER_KEY] = DEFAULT_COLUMNS_NUMBER
 
         data.update({"path": str(path)})
 
