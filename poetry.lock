@@ -155,21 +155,23 @@ requests = "*"
 
 [[package]]
 name = "kivymd"
-version = "0.104.1"
+version = "0.104.2.dev0"
 description = "Set of widgets for Kivy inspired by Google's Material Design"
 category = "main"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-kivy = "*"
+kivy = ">=2.0.0"
 pillow = "*"
-requests = "*"
 
 [package.extras]
-dev = ["black", "pre-commit"]
-docs = ["sphinx", "sphinx-autoapi", "sphinx-rtd-theme"]
+dev = ["pre-commit", "black", "isort", "flake8", "pytest", "pytest-cov", "pytest-asyncio", "pytest-timeout", "coveralls", "pyinstaller"]
+docs = ["sphinx", "sphinx-autoapi (==1.4.0)", "sphinx-rtd-theme", "sphinx-notfound-page"]
 
+[package.source]
+type = "url"
+url = "https://github.com/kivymd/KivyMD/archive/8f83652.zip"
 [[package]]
 name = "packaging"
 version = "20.9"
@@ -343,7 +345,7 @@ python-versions = ">=3.6,<4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "5c16fe1e212de5cfaaf1dd09b406ab3386710013e1647b8d2c785dba4f7a4702"
+content-hash = "a5fd17e16020ab776e13293868192acc494043a710716f5fb143b8d40d12d00c"
 
 [metadata.files]
 apipkg = [
@@ -439,10 +441,7 @@ kivy-garden = [
     {file = "Kivy Garden-0.1.4.tar.gz", hash = "sha256:9b7d9de5efacbcd0c4b3dd873b30622a86093c9965aa47b523c7a32f3eb34610"},
     {file = "kivy-garden-0.1.4.tar.gz", hash = "sha256:c256f42788421273a08fbb0a228f0fb0e80dd86b629fb8c0920507f645be6c72"},
 ]
-kivymd = [
-    {file = "kivymd-0.104.1-py3-none-any.whl", hash = "sha256:a9d3e14950ae616bf13f0a9ebccc761ec84e2ba36e671d0102045eaa63dbc2b0"},
-    {file = "kivymd-0.104.1.tar.gz", hash = "sha256:9dcbc2cb8affde9c82572198fddb32c814cdd57254a0e4b00c53882db2c8d6a6"},
-]
+kivymd = []
 packaging = [
     {file = "packaging-20.9-py2.py3-none-any.whl", hash = "sha256:67714da7f7bc052e064859c05c595155bd1ee9f69f76557e21f051443c20947a"},
     {file = "packaging-20.9.tar.gz", hash = "sha256:5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"},

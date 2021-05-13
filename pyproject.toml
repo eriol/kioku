@@ -11,7 +11,7 @@ authors = ["Daniele Tricoli <eriol@mornie.org>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 Kivy = "^2.0.0"
-kivymd = "^0.104.1"
+kivymd = { url = "https://github.com/kivymd/KivyMD/archive/8f83652.zip" }
 xdg = "^5.0.2"
 toml = "^0.10.2"
 
