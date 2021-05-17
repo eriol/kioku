@@ -50,7 +50,7 @@ class LevelCoverListItem(BaseListItem):
     path = StringProperty()
     columns_number = NumericProperty()
 
-    def on_press(self):
+    def on_release(self):
         MDApp.get_running_app().root.get_screen("game").level_path = self.path
         MDApp.get_running_app().root.get_screen(
             "game"
