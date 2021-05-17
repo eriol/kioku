@@ -1,5 +1,7 @@
 """Kioku Memory Game."""
 import shutil
+import uuid
+from zipfile import ZipFile
 
 from kivy.core.window import Window
 from kivymd.app import MDApp
@@ -7,6 +9,7 @@ from kivymd.theming import ThemableBehavior
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
+from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.screen import MDScreen
 
 from .config import settings
@@ -29,6 +32,14 @@ class KiokuApp(MDApp):
 
     dialog = None
     selected_level_path = None
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.file_manager = MDFileManager(
+            exit_manager=self.exit_manager,
+            select_path=self.select_path,
+            ext=[".zip"],
+        )
 
     def on_start(self):
         self.load_levels()
@@ -74,9 +85,25 @@ class KiokuApp(MDApp):
 
     def close_alert_delete_level(self, *args):
         shutil.rmtree(self.selected_level_path)
+        self.reload_levels()
+        self.dialog.dismiss()
+
+    def reload_levels(self):
         self.root.get_screen("main").ids.levels.clear_widgets()
         self.load_levels()
-        self.dialog.dismiss()
+
+    def add_new_level(self):
+        self.file_manager.show("/")
+
+    def exit_manager(self, *args):
+        self.file_manager.close()
+
+    def select_path(self, path):
+        with ZipFile(path, "r") as zf:
+            zf.extractall(settings.LEVELS_DIR / str(uuid.uuid4()))
+
+        self.reload_levels()
+        self.exit_manager()
 
 
 def main():
