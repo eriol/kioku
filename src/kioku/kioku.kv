@@ -55,6 +55,11 @@ ScreenManager:
         pos_hint: {"center_y": .5}
         on_release: app.add_new_level()
 
+<LevelDeleteButton>:
+    icon: "minus-circle-outline"
+    pos_hint: {"center_y": .5}
+    on_release: app.show_alert_delete_level_dialog(self.name, self.path)
+
 <LevelCoverListItem>:
     size_hint_y: None
     height: dp(100)
@@ -67,6 +72,7 @@ ScreenManager:
             points: (root.x+dp(16), root.y, root.x+self.width-dp(16)-0, root.y)
 
     MDBoxLayout:
+        id: _right_container
         orientation: "horizontal"
         adaptive_height: True
         pos_hint: {"center_x": .5, "center_y": .5}
@@ -76,7 +82,3 @@ ScreenManager:
         MDLabel:
             text: root.name
 
-        MDIconButton:
-            icon: "minus-circle-outline"
-            pos_hint: {"center_y": .5}
-            on_release: app.show_alert_delete_level_dialog(root.name, root.path)

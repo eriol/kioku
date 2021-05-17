@@ -4,7 +4,8 @@ from kivy.clock import Clock
 from kivy.properties import BooleanProperty, NumericProperty, StringProperty
 from kivy.uix.button import Button
 from kivymd.app import MDApp
-from kivymd.uix.list import BaseListItem
+from kivymd.uix.button import MDIconButton
+from kivymd.uix.list import BaseListItem, ContainerSupport, IRightBodyTouch
 
 METADATA_FILE_NAME = "metadata.toml"
 COLUMNS_NUMBER_KEY = "columns_number"
@@ -43,7 +44,7 @@ class Card(Button):
         anim.start(self)
 
 
-class LevelCoverListItem(BaseListItem):
+class LevelCoverListItem(ContainerSupport, BaseListItem):
     """A level inside the level list."""
 
     name = StringProperty()
@@ -68,4 +69,16 @@ class LevelCoverListItem(BaseListItem):
 
         data.update({"path": str(path)})
 
-        return cls(**data)
+        item = cls(**data)
+        item.add_widget(LevelDeleteButton(name=data["name"], path=path))
+
+        return item
+
+
+class LevelDeleteButton(IRightBodyTouch, MDIconButton):
+    """A button to delete a level."""
+
+    def __init__(self, name, path, **kwargs):
+        super().__init__(**kwargs)
+        self.name = name
+        self.path = str(path)
