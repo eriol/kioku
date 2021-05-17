@@ -73,7 +73,6 @@ class KiokuApp(MDApp):
 
         self.selected_level_path = level_path
         self.dialog.bind(on_dismiss=self.on_alert_delete_level_dialog_dismiss)
-        self.dialog.set_normal_height()
         self.dialog.open()
 
     def close_alert_delete_level_dialog(self, *args):
