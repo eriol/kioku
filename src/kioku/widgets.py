@@ -10,6 +10,8 @@ from kivymd.uix.list import BaseListItem, ContainerSupport, IRightBodyTouch
 METADATA_FILE_NAME = "metadata.toml"
 COLUMNS_NUMBER_KEY = "columns_number"
 DEFAULT_COLUMNS_NUMBER = 3
+LEVEL_NAME_KEY = "name"
+DEFAULT_LEVEL_NAME = "Unknown"
 
 
 class Card(Button):
@@ -45,7 +47,7 @@ class Card(Button):
 
 
 class LevelCoverListItem(ContainerSupport, BaseListItem):
-    """A level inside the level list."""
+    """A level inside the levels list."""
 
     name = StringProperty()
     path = StringProperty()
@@ -66,6 +68,9 @@ class LevelCoverListItem(ContainerSupport, BaseListItem):
 
         if COLUMNS_NUMBER_KEY not in data:
             data[COLUMNS_NUMBER_KEY] = DEFAULT_COLUMNS_NUMBER
+
+        if LEVEL_NAME_KEY not in data:
+            data[LEVEL_NAME_KEY] = DEFAULT_LEVEL_NAME
 
         data.update({"path": str(path)})
 
