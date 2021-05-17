@@ -16,6 +16,8 @@ from .config import settings
 from .screens import GameScreen, SettingsScreen  # noqa: F401
 from .widgets import LevelCoverListItem
 
+LEVELS_EXT = ".zip"
+
 Window.size = (700, 900)
 
 
@@ -38,7 +40,7 @@ class KiokuApp(MDApp):
         self.file_manager = MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path,
-            ext=[".zip"],
+            ext=[LEVELS_EXT],
         )
 
     def on_start(self):
