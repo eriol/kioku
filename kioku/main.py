@@ -3,6 +3,7 @@ import shutil
 import uuid
 from zipfile import ZipFile
 
+from config import settings
 from kivy.core.window import Window
 from kivymd.app import MDApp
 from kivymd.theming import ThemableBehavior
@@ -11,10 +12,8 @@ from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.screen import MDScreen
-
-from .config import settings
-from .screens import GameScreen  # noqa: F401
-from .widgets import LevelCoverListItem
+from screens import GameScreen  # noqa: F401
+from widgets import LevelCoverListItem
 
 LEVELS_EXT = ".zip"
 
@@ -109,3 +108,7 @@ class KiokuApp(MDApp):
 
 def main():
     KiokuApp().run()
+
+
+if __name__ == "__main__":
+    main()

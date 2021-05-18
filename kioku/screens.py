@@ -6,9 +6,8 @@ from kivymd.app import MDApp
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
-
-from .utils import ImageLoader
-from .widgets import Card
+from utils import ImageLoader
+from widgets import Card
 
 
 class GameScreen(MDScreen):
