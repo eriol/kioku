@@ -18,6 +18,8 @@ toml = "^0.10.2"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"
 pytest-xdist = "^2.2.1"
+Cython = "^0.29.23"
+buildozer = "^1.2.0"
 
 [tool.poetry.scripts]
 kioku = "kioku.main:main"
