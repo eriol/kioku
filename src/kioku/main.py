@@ -13,7 +13,7 @@ from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.screen import MDScreen
 
 from .config import settings
-from .screens import GameScreen, SettingsScreen  # noqa: F401
+from .screens import GameScreen  # noqa: F401
 from .widgets import LevelCoverListItem
 
 LEVELS_EXT = ".zip"

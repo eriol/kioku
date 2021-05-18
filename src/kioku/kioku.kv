@@ -3,7 +3,7 @@
 ScreenManager:
     MainScreen:
     GameScreen:
-    SettingsScreen:
+
 
 <MainScreen>:
     name: "main"
@@ -18,25 +18,10 @@ ScreenManager:
             MDList:
                 id: levels
 
+
 <GameScreen>:
     name: "game"
 
-
-<SettingsScreen>:
-    name: "settings"
-
-    MDTextField:
-        id: input_images_path
-        pos_hint: {'center_x':0.5, 'center_y':0.1}
-        helper_text: "Path to the images"
-        helper_text_mode: "persistent"
-        size_hint_x: 0.6
-        pos_hint: {'center_y':0.75, 'center_x':0.5}
-
-    MDRaisedButton:
-        text: "Main"
-        pos_hint: {'center_x':0.5, 'center_y':0.1}
-        on_press: root.manager.current = "main"
 
 <MainToolbar>:
     md_bg_color: gch("#eeaa12")
@@ -55,10 +40,12 @@ ScreenManager:
         pos_hint: {"center_y": .5}
         on_release: app.add_new_level()
 
+
 <LevelDeleteButton>:
     icon: "minus-circle-outline"
     pos_hint: {"center_y": .5}
     on_release: app.show_alert_delete_level_dialog(self.name, self.path)
+
 
 <LevelCoverListItem>:
     size_hint_y: None
@@ -81,4 +68,3 @@ ScreenManager:
 
         MDLabel:
             text: root.name
-

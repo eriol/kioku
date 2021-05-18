@@ -1,6 +1,10 @@
+from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.properties import NumericProperty, StringProperty
 from kivy.uix.gridlayout import GridLayout
+from kivymd.app import MDApp
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
 
 from .utils import ImageLoader
@@ -16,7 +20,11 @@ class GameScreen(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         Window.bind(on_touch_up=self.on_touch_up)
+        self.dialog = None
 
+        self.clenup()
+
+    def clenup(self):
         self.cards_deck = []
         self.cards_pair = []
         self.errors = 0
@@ -42,10 +50,15 @@ class GameScreen(MDScreen):
             self.cards_pair = []
 
         if self.check_game_finish():
-            pass
+            Clock.schedule_once(self.on_finish, 2)
 
     def on_pre_enter(self):
+        self.clenup()
         self.load_cards()
+
+    def on_pre_leave(self):
+        self.clenup()
+        self.clear_widgets()
 
     def load_cards(self):
         """Load cards from the path level specified."""
@@ -63,6 +76,25 @@ class GameScreen(MDScreen):
 
         return False
 
+    def on_finish(self, dt):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                title="Congratulations!",
+                text=f"You completed the level with {self.errors} errors!",
+                buttons=[
+                    MDFlatButton(
+                        text="OK",
+                        on_press=self.close_dialog,
+                    )
+                ],
+            )
 
-class SettingsScreen(MDScreen):
-    """Screen for settings."""
+        self.dialog.bind(on_dismiss=self.on_dialog_dismiss)
+        self.dialog.open()
+
+    def on_dialog_dismiss(self, *args):
+        self.dialog = None
+
+    def close_dialog(self, *args):
+        MDApp.get_running_app().root.current = "main"
+        self.dialog.dismiss()
