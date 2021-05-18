@@ -7,3 +7,5 @@ __pycache__/
 
 docs/build/
 dist/
+bin/
+.buildozer/
