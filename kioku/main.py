@@ -1,4 +1,5 @@
 """Kioku Memory Game."""
+import os
 import shutil
 import uuid
 from zipfile import ZipFile
@@ -15,6 +16,13 @@ from screens import GameScreen  # noqa: F401
 from widgets import LevelCoverListItem
 
 LEVELS_EXT = ".zip"
+
+try:
+    from android.permissions import Permission, request_permissions
+
+    ON_ANDROID = True
+except ImportError:
+    ON_ANDROID = False
 
 
 class MainScreen(MDScreen):
@@ -33,6 +41,12 @@ class KiokuApp(MDApp):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        if ON_ANDROID:
+            request_permissions(
+                [Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE]
+            )
+
         self.file_manager = MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path,
@@ -90,7 +104,8 @@ class KiokuApp(MDApp):
         self.load_levels()
 
     def add_new_level(self):
-        self.file_manager.show("/")
+        path = "/storage/emulated/0/" if ON_ANDROID else "/"
+        self.file_manager.show(path)
 
     def exit_manager(self, *args):
         self.file_manager.close()
