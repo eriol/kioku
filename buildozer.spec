@@ -13,7 +13,7 @@ package.domain = org.mornie
 source.dir = ./kioku
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,toml
+source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -41,7 +41,6 @@ requirements = python3==3.8.1,kivy==2.0.0,https://github.com/kivymd/KivyMD/archi
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
-; requirements.source.kivymd = ~/.cache/pypoetry/virtualenvs/kioku-ebes3tec-py3.9/lib/python3.9/site-packages/kivymd/
 
 # (list) Garden requirements
 #garden_requirements =
