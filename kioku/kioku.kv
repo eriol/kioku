@@ -11,7 +11,10 @@ ScreenManager:
     MDBoxLayout:
         orientation: 'vertical'
 
-        MainToolbar:
+        MDToolbar:
+            title: "kioku"
+            right_action_items: [["plus-circle-outline", lambda _: app.add_new_level()]]
+            elevation: 10
 
         ScrollView:
 
@@ -21,24 +24,6 @@ ScreenManager:
 
 <GameScreen>:
     name: "game"
-
-
-<MainToolbar>:
-    md_bg_color: gch("#eeaa12")
-    size_hint_y: None
-    height: self.theme_cls.standard_increment
-    padding: dp(10)
-    spacing: dp(12)
-
-    MDLabel:
-        text: "kioku"
-
-    Widget:
-
-    MDIconButton:
-        icon: "plus-circle-outline"
-        pos_hint: {"center_y": .5}
-        on_release: app.add_new_level()
 
 
 <LevelDeleteButton>:
