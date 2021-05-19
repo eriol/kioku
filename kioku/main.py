@@ -266,6 +266,10 @@ class KiokuApp(MDApp):
             ext=[LEVELS_EXT],
         )
 
+    def build(self):
+        self.theme_cls.primary_palette = "LightGreen"
+        super().build()
+
     def on_start(self):
         self.load_levels()
 
