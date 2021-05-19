@@ -21,6 +21,9 @@ pytest-xdist = "^2.2.1"
 Cython = "^0.29.23"
 buildozer = "^1.2.0"
 
+[tool.poetry.scripts]
+kioku = "kioku.main:run"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
