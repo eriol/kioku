@@ -122,8 +122,12 @@ class LevelCoverListItem(ContainerSupport, BaseListItem):
     @classmethod
     def from_metadata(cls, path):
         """Create a new instance of this class using data inside METADATA_FILE_NAME."""
-        with open(path / METADATA_FILE_NAME) as f:
-            data = toml.load(f)
+        data = {}
+        try:
+            with open(path / METADATA_FILE_NAME) as f:
+                data = toml.load(f)
+        except FileNotFoundError:
+            pass  # We can load a level without the metadata file.
 
         if COLUMNS_NUMBER_KEY not in data:
             data[COLUMNS_NUMBER_KEY] = DEFAULT_COLUMNS_NUMBER
@@ -328,8 +332,24 @@ class KiokuApp(MDApp):
         self.file_manager.close()
 
     def select_path(self, path):
+        """Validate the level file and if it's OK extract into leverls directory."""
         with ZipFile(path, "r") as zf:
-            zf.extractall(settings.LEVELS_DIR / str(uuid.uuid4()))
+            files = zf.namelist()
+
+            # Validate the level file.
+
+            # 1. Remove the metadata file if it exists from the list of files inside the
+            #    zipfile.
+            try:
+                files.remove(METADATA_FILE_NAME)
+            except ValueError:
+                pass
+
+            # 2. if all the remaining files have ALLOWED_IMAGES_PATTERN[:1] (we want
+            #    to remove the starting *) extension extract all the files into
+            #    settings.LEVELS_DIR.
+            if all([file.endswith(ALLOWED_IMAGES_PATTERN[1:]) for file in files]):
+                zf.extractall(settings.LEVELS_DIR / str(uuid.uuid4()))
 
         self.reload_levels()
         self.exit_manager()
