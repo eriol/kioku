@@ -1,5 +1,4 @@
 """Kioku Memory Game."""
-import os
 import shutil
 import uuid
 from pathlib import Path
@@ -176,6 +175,7 @@ class GameScreen(MDScreen):
             self.check_cards_pair()
 
     def check_cards_pair(self):
+        """Check if 2 selected cards match."""
         if len(self.cards_pair) == 2:
             card1, card2 = self.cards_pair
             if card1.card_image != card2.card_image:
@@ -188,7 +188,7 @@ class GameScreen(MDScreen):
             self.cards_pair = []
 
         if self.check_game_finish():
-            Clock.schedule_once(self.on_finish, 2)
+            Clock.schedule_once(self.on_finish, 1)
 
     def on_pre_enter(self):
         self.clenup()
