@@ -10,7 +10,7 @@ package.name = kioku
 package.domain = org.mornie
 
 # (str) Source code where the main.py live
-source.dir = ./kioku/
+source.dir = ./kioku
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas,toml
@@ -28,11 +28,11 @@ source.include_exts = py,png,jpg,kv,atlas,toml
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+# version = 0.1
 
 # (str) Application versioning (method 2)
-# version.regex = __version__ = ['"](.*)['"]
-# version.filename = %(source.dir)s/main.py
+version.regex = __version__ = ['"](.*)['"]
+version.filename = %(source.dir)s/__init__.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
