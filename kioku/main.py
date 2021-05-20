@@ -164,14 +164,14 @@ class GameScreen(MDScreen):
 
     def clenup(self):
         self.cards_deck = []
-        self.cards_pair = []
+        self.cards_pair = set()
         self.errors = 0
 
     def on_touch_up(self, touch, *args):
         if args:
             for k in args[0].ud:
                 if isinstance(k, Card) and not k.is_discovered:
-                    self.cards_pair.append(k)
+                    self.cards_pair.add(k)
 
             self.check_cards_pair()
 
@@ -186,7 +186,7 @@ class GameScreen(MDScreen):
             else:
                 card1.is_discovered = True
                 card2.is_discovered = True
-            self.cards_pair = []
+            self.cards_pair = set()
 
         if self.check_game_finish():
             Clock.schedule_once(self.on_finish, 1)
