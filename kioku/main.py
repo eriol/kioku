@@ -13,6 +13,7 @@ from kivy.core.window import Window
 from kivy.properties import BooleanProperty, NumericProperty, StringProperty
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
+from kivy.utils import platform
 from kivymd.app import MDApp
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -22,12 +23,8 @@ from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.list import BaseListItem, ContainerSupport, IRightBodyTouch
 from kivymd.uix.screen import MDScreen
 
-try:
+if platform == "android":
     from android.permissions import Permission, request_permissions
-
-    ON_ANDROID = True
-except ImportError:
-    ON_ANDROID = False
 
 LEVELS_EXT = ".zip"
 # It's OK to keep this simple and support only JPG.
@@ -259,7 +256,7 @@ class KiokuApp(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        if ON_ANDROID:
+        if platform == "android":
             request_permissions(
                 [Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE]
             )
@@ -325,7 +322,7 @@ class KiokuApp(MDApp):
         self.load_levels()
 
     def add_new_level(self):
-        path = "/storage/emulated/0/" if ON_ANDROID else "/"
+        path = "/storage/emulated/0/" if platform == "android" else "/"
         self.file_manager.show(path)
 
     def exit_manager(self, *args):
