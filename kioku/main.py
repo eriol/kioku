@@ -160,9 +160,9 @@ class GameScreen(MDScreen):
         Window.bind(on_touch_up=self.on_touch_up)
         self.dialog = None
 
-        self.clenup()
+        self.cleanup()
 
-    def clenup(self):
+    def cleanup(self):
         self.cards_deck = []
         self.cards_pair = set()
         self.errors = 0
@@ -192,11 +192,11 @@ class GameScreen(MDScreen):
             Clock.schedule_once(self.on_finish, 1)
 
     def on_pre_enter(self):
-        self.clenup()
+        self.cleanup()
         self.load_cards()
 
     def on_pre_leave(self):
-        self.clenup()
+        self.cleanup()
         self.clear_widgets()
 
     def load_cards(self):
