@@ -47,9 +47,6 @@ class Settings:
             self.LEVELS_DIR.mkdir(parents=True)
 
 
-settings = Settings()
-
-
 class ImageLoader:
     """Load images from the specified path."""
 
@@ -261,6 +258,8 @@ class KiokuApp(MDApp):
                 [Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE]
             )
 
+        self.settings = Settings()
+
         self.file_manager = MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path,
@@ -276,7 +275,7 @@ class KiokuApp(MDApp):
 
     def load_levels(self):
         """Load levels from settings.LEVELS_DIR."""
-        for level_path in settings.LEVELS_DIR.iterdir():
+        for level_path in self.settings.LEVELS_DIR.iterdir():
             if level_path.is_dir():
                 self.root.get_screen("main").ids.levels.add_widget(
                     LevelCoverListItem.from_metadata(level_path)
@@ -346,7 +345,7 @@ class KiokuApp(MDApp):
             #    to remove the starting *) extension extract all the files into
             #    settings.LEVELS_DIR.
             if all([file.endswith(ALLOWED_IMAGES_PATTERN[1:]) for file in files]):
-                zf.extractall(settings.LEVELS_DIR / str(uuid.uuid4()))
+                zf.extractall(self.settings.LEVELS_DIR / str(uuid.uuid4()))
 
         self.reload_levels()
         self.exit_manager()
