@@ -46,10 +46,10 @@ requirements = python3==3.8.1,kivy==2.0.0,https://github.com/kivymd/KivyMD/archi
 #garden_requirements =
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/data/presplash.png
+presplash.filename = ./extra/kioku-splash.png
 
 # (str) Icon of the application
-#icon.filename = %(source.dir)s/data/icon.png
+icon.filename = ./extra/kioku.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
