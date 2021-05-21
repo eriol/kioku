@@ -15,8 +15,6 @@ from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.utils import platform
 from kivymd.app import MDApp
-from kivymd.theming import ThemableBehavior
-from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDFlatButton, MDIconButton
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.filemanager import MDFileManager
@@ -42,7 +40,7 @@ class Settings:
     LEVELS_DIR = xdg.xdg_data_home() / "kioku"
 
     def __init__(self):
-
+        """Automatically create LEVELS_DIR if it doesn't exists."""
         if not self.LEVELS_DIR.exists():
             self.LEVELS_DIR.mkdir(parents=True)
 
@@ -50,13 +48,14 @@ class Settings:
 class ImageLoader:
     """Load images from the specified path."""
 
-    def __init__(self, path):
+    def __init__(self, path):  # noqa: D107
         self.path = Path(path)
         self.images = []
 
         self.load()
 
     def load(self):
+        """Load images with ALLOWED_IMAGES_PATTERN from specified path."""
         self.images = [f.name for f in self.path.glob(ALLOWED_IMAGES_PATTERN)]
 
     def get_repeated_images(self, times):
@@ -68,6 +67,8 @@ class ImageLoader:
 
 
 class Card(Button):
+    """A card in kioku game."""
+
     size_hint_x = NumericProperty(0.33)
     text = StringProperty("記憶")
     font_name = "NotoSansCJK-Regular.ttc"
@@ -238,10 +239,6 @@ class GameScreen(MDScreen):
 
 class MainScreen(MDScreen):
     """Main screen of the game."""
-
-
-class MainToolbar(ThemableBehavior, MDBoxLayout):
-    """The main toolbar of the game."""
 
 
 class KiokuApp(MDApp):
