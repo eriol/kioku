@@ -282,20 +282,21 @@ class KiokuApp(MDApp):
                 )
 
     def show_alert_delete_level_dialog(self, level_name, level_path):
+        """Show the dialog that ask to remove a specified level."""
         if not self.dialog:
             self.dialog = MDDialog(
-                title=f"Delete {level_name} level",
-                text=f"Are you sure you want to delete {level_name} level?",
+                title="Delete level",
+                text=f'Are you sure you want to delete "{level_name}" level?',
                 buttons=[
                     MDFlatButton(
                         text="CANCEL",
                         text_color=self.theme_cls.primary_color,
-                        on_press=self.close_alert_delete_level_dialog,
+                        on_press=self.on_close_alert_delete_level_cancel,
                     ),
                     MDFlatButton(
                         text="DELETE",
                         text_color=self.theme_cls.primary_color,
-                        on_press=self.close_alert_delete_level,
+                        on_press=self.on_close_alert_delete_level_delete,
                     ),
                 ],
             )
@@ -304,14 +305,16 @@ class KiokuApp(MDApp):
         self.dialog.bind(on_dismiss=self.on_alert_delete_level_dialog_dismiss)
         self.dialog.open()
 
-    def close_alert_delete_level_dialog(self, *args):
+    def on_close_alert_delete_level_cancel(self, *args):
+        """Close the dialog used to remove a level without doing anything."""
         self.dialog.dismiss()
 
     def on_alert_delete_level_dialog_dismiss(self, *args):
         self.dialog = None
         self.selected_level_path = None
 
-    def close_alert_delete_level(self, *args):
+    def on_close_alert_delete_level_delete(self, *args):
+        """Delete the specified level and close the dialog."""
         shutil.rmtree(self.selected_level_path)
         self.reload_levels()
         self.dialog.dismiss()
