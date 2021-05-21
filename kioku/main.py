@@ -123,7 +123,7 @@ class LevelCoverListItem(ContainerSupport, BaseListItem):
         try:
             with open(path / METADATA_FILE_NAME) as f:
                 data = toml.load(f)
-        except FileNotFoundError:
+        except (FileNotFoundError, toml.decoder.TomlDecodeError):
             pass  # We can load a level without the metadata file.
 
         if COLUMNS_NUMBER_KEY not in data:
