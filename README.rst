@@ -58,3 +58,13 @@ Load a level
 
 Press the button on top right of the toolbar (the plus symbol circled) and
 select the **ZIP** file using the file browser that will appear.
+
+
+Gallery
+-------
+
+.. image: extra/screenshot_main_linux.png
+   :alt: Main screen of kioku with the list of levels
+
+.. image: extra/screenshot_game_linux.png
+   :alt: Screen of a level with images of cats
