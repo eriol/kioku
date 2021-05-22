@@ -6,9 +6,9 @@ levels. It's written in Python and released under the GPL3.
 
 It can be installed both on Linux and Android.
 
-Here you can see a `video of the game play`_.
+Here you can see a `video of the game on Android`_.
 
-.. _video of the game play: https://peertube.debian.social/videos/watch/be2960fa-d65f-4ead-901a-71d71e34f21f
+.. _video of the game on Android: https://peertube.debian.social/videos/watch/be2960fa-d65f-4ead-901a-71d71e34f21f
 
 Installation
 ------------
@@ -52,3 +52,9 @@ the **ZIP** file with the following:
 
    name = "My wonderful level"
    columns_number = 4
+
+Load a level
+------------
+
+Press the button on top right of the toolbar (the plus symbol circled) and
+select the **ZIP** file using the file browser that will appear.
