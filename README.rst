@@ -63,22 +63,15 @@ select the **ZIP** file using the file browser that will appear.
 Gallery
 -------
 
-.. figure:: extra/screenshot_main_linux.png
-   :scale: 75%
-   :align: center
-   :alt: Main screen of kioku with the list of levels
+.. raw:: html
 
-   The main screen of kioku on Linux.
+   <div style="display:flex;">
+   <img alt="The main screen of kioku on Linux" src="extra/screenshot_main_linux.png" width="30%">
+   <img alt="The game screen of kioku on Linux playing a level with cats' images" src="extra/screenshot_game_linux.png" width="30%">
+   </div>
 
-.. figure:: extra/screenshot_game_linux.png
-   :scale: 75%
-   :align: center
-   :alt: Screen of a level with images of cats
-
-   The game screen of kioku on Linux playing a level with cats' images.
-
-The images used are cropped version of the following images released under
-Creative Commons licenses:
+The images used in the game screen are cropped versions of the following images
+released under Creative Commons licenses:
 
 * `<https://commons.wikimedia.org/wiki/File:Tabby_cat_with_blue_eyes-3336579.jpg>`_
 * `<https://commons.wikimedia.org/wiki/File:Sleeping_cat_on_her_back.jpg>`_
