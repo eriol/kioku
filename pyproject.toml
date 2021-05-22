@@ -2,6 +2,9 @@
 line-length = 88
 target-version = ["py38"]
 
+[tool.isort]
+profile = "black"
+
 [tool.poetry]
 name = "kioku"
 version = "0.1.0"
