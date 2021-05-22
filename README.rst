@@ -66,8 +66,8 @@ Gallery
 .. raw:: html
 
    <div style="display:flex;">
-   <img alt="The main screen of kioku on Linux" src="extra/screenshot_main_linux.png" width="50%">
-   <img alt="The game screen of kioku on Linux playing a level with cats' images" src="extra/screenshot_game_linux.png" width="50%">
+   <img alt="The main screen of kioku on Linux" src="extra/screenshot_main_linux.png" width="40%">
+   <img alt="The game screen of kioku on Linux playing a level with cats' images" src="extra/screenshot_game_linux.png" width="40%">
    </div>
 
 The images used in the game screen are cropped versions of the following images
