@@ -76,3 +76,8 @@ released under Creative Commons licenses:
 * `<https://commons.wikimedia.org/wiki/File:Tabby_cat_with_blue_eyes-3336579.jpg>`_
 * `<https://commons.wikimedia.org/wiki/File:Sleeping_cat_on_her_back.jpg>`_
 * `<https://commons.wikimedia.org/wiki/File:June_odd-eyed-cat_cropped.jpg>`_
+
+Thanks
+------
+
+Many thanks to sidhe who drew kioku's logo.
