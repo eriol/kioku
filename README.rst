@@ -23,4 +23,16 @@ Linux
 #. Clone the repository from https://noa.mornie.org/eriol/kioku
 #. Install the dependencies using ``poetry install``
 #. Build the project using ``poetry build``
-#. Install the wheel or the sdist you will find on ``dist/`` directory
+#. Install the wheel or the sdist you will find in ``dist/`` directory
+
+Android
+~~~~~~~
+
+#. Clone the repository from https://noa.mornie.org/eriol/kioku
+#. Install the dependencies using ``poetry install``
+#. Build the Android app using ``poetry run buildozer -v android debug`` (beware
+   that first time `buildozer`_ will download Android SDK, NDK and other stuff,
+   it will take time)
+#. Install the apk you will find in ``bin/`` directory
+
+.. _buildozer: https://buildozer.readthedocs.io/en/1.2.0/
