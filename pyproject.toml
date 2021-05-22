@@ -7,6 +7,10 @@ name = "kioku"
 version = "0.1.0"
 description = "kioku (記憶) a simple and customizable memory game"
 authors = ["Daniele Tricoli <eriol@mornie.org>"]
+readme = "README.rst"
+repository = "https://noa.mornie.org/eriol/kioku"
+license = "GPL-3.0-or-later"
+keywords = ["memory", "game"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
